@@ -1,14 +1,14 @@
 import './App.css'
-import Card from "./components/home/Card.tsx";
-import Grid from "./components/home/Grid.tsx";
+import Card from "./components/home/Card";
+import Grid from "./components/home/Grid";
 import reactIcon from './assets/react.svg';
 import {BrowserRouter, Routes, Route, Outlet, useParams} from 'react-router-dom';
 import HeaderMegaMenu from "./components/menu";
 
 
-import ValueProposition from './components/home/ValueProposition.tsx';
-import Hero from './components/home/Hero.tsx';
-import FeaturedServices from './components/home/FeaturedServices.tsx';
+import ValueProposition from './components/home/ValueProposition';
+import Hero from './components/home/Hero';
+import FeaturedServices from './components/home/FeaturedServices';
 
 // Datos simulados para la página de servicios
 const serviciosData = {
@@ -89,8 +89,10 @@ function Home() {
 
 // Componente para la página 404
 function NotFound() {
-	return <div>Página no encontrada</div>
-			<ValueProposition />
+	return <div style={{padding: '2rem', color: 'white'}}>
+		<h1>Página no encontrada</h1>
+		<p>La página que buscas no existe</p>
+	</div>
 }
 
 // Componente para la página de proyectos (placeholder)
