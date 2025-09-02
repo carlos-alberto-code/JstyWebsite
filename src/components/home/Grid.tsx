@@ -4,11 +4,11 @@ import React from "react";
 
 interface GridProps {
 	columns?: number; // ahora opcional y será clampiada entre 2 y 4
-	cards: React.ReactNode | React.ReactNode[]; // aceptar elemento único o lista
+	cards: React.ReactNode[]; // Lista de elementos React (Cards)
 	gap?: string | number;
 }
 const Grid: React.FC<GridProps> = ({
-	columns = 3,
+	columns = 4,
 	cards,
 	gap = '2rem'
 }: GridProps) => {

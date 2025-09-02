@@ -2,9 +2,11 @@ import './App.css'
 import Card from "./components/home/Card.tsx";
 import Grid from "./components/home/Grid.tsx";
 import reactIcon from './assets/react.svg';
-import {BrowserRouter, Routes, Route, useParams} from 'react-router-dom';
+import {BrowserRouter, Routes, Route, Outlet, useParams} from 'react-router-dom';
+import HeaderMegaMenu from "./components/menu";
 
 
+// Datos simulados para la página de servicios
 const serviciosData = {
 	"desarrollo-web": {
 		title: "Desarrollo Web",
@@ -26,6 +28,7 @@ const serviciosData = {
 	}
 }
 
+// Componente para mostrar detalles de un servicio específico
 function Servicio() {
 	const {servicioId} = useParams();
 	const servicio = serviciosData[servicioId as keyof typeof serviciosData]
@@ -46,34 +49,73 @@ function Servicio() {
 			</ul>
 		</div>
 	)
-	
 }
 
-
-function App() {
-	
+// Componente para la página de inicio
+function Home() {
 	const cards = [
 		<Card key="1" icon={reactIcon} title="Servicio A" content="Descripción breve del servicio A."/>,
 		<Card key="2" icon={reactIcon} title="Servicio B" content="Descripción breve del servicio B."/>,
 		<Card key="3" icon={reactIcon} title="Servicio C" content="Descripción breve del servicio C."/>,
 		<Card key="4" icon={reactIcon} title="Servicio D" content="Descripción breve del servicio D."/>,
-		<Card key="1" icon={reactIcon} title="Servicio A" content="Descripción breve del servicio A."/>,
-		<Card key="2" icon={reactIcon} title="Servicio B" content="Descripción breve del servicio B."/>,
-		<Card key="3" icon={reactIcon} title="Servicio C" content="Descripción breve del servicio C."/>,
-		<Card key="4" icon={reactIcon} title="Servicio D" content="Descripción breve del servicio D."/>
+		<Card key="5" icon={reactIcon} title="Servicio E" content="Descripción breve del servicio E."/>,
+		<Card key="6" icon={reactIcon} title="Servicio F" content="Descripción breve del servicio F."/>,
+		<Card key="7" icon={reactIcon} title="Servicio G" content="Descripción breve del servicio G."/>,
+		<Card key="8" icon={reactIcon} title="Servicio H" content="Descripción breve del servicio H."/>
 	];
 	
-	function NotFound() {
-		return <div>Página no encontrada</div>
-	}
-	
-	
+	return <Grid columns={4} cards={cards} />;
+}
+
+// Componente para la página 404
+function NotFound() {
+	return <div>Página no encontrada</div>
+}
+
+// Componente para la página de proyectos (placeholder)
+function Proyectos() {
+	return <div style={{padding: '2rem', color: 'white'}}>
+		<h1>Nuestros Proyectos</h1>
+		<p>Esta página está en construcción</p>
+	</div>
+}
+
+// Componente para la página de blog (placeholder)
+function Blog() {
+	return <div style={{padding: '2rem', color: 'white'}}>
+		<h1>Nuestro Blog</h1>
+		<p>Esta página está en construcción</p>
+	</div>
+}
+
+// Componente que define el layout principal con navegación
+function MainLayout() {
+	return (
+		<>
+			{/* El menú de navegación está posicionado por el layout */}
+			<div className="navigation-container">
+				<HeaderMegaMenu />
+			</div>
+			
+			{/* Contenido de cada página */}
+			<main className="main-content">
+				<Outlet />
+			</main>
+		</>
+	);
+}
+
+function App() {
 	return (
 		<BrowserRouter>
 			<Routes>
-				<Route path="/" element={<Grid columns={4} cards={cards}/>}/>
-				<Route path="/servicio/:servicioId" element={<Servicio />} />
-				<Route path="*" element={<NotFound/>}/>
+				<Route path="/" element={<MainLayout />}>
+					<Route index element={<Home />} />
+					<Route path="servicio/:servicioId" element={<Servicio />} />
+					<Route path="proyectos" element={<Proyectos />} />
+					<Route path="blog" element={<Blog />} />
+					<Route path="*" element={<NotFound />} />
+				</Route>
 			</Routes>
 		</BrowserRouter>
 	)

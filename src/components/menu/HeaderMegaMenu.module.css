@@ -1,0 +1,168 @@
+.header {
+  height: 70px; /* aumentado un poco para mayor presencia */
+  padding-left: var(--mantine-spacing-md);
+  padding-right: var(--mantine-spacing-md);
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a2a2a 100%);
+  border-bottom: 1px solid rgba(0, 245, 255, 0.1);
+  backdrop-filter: blur(20px);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(0, 245, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.02);
+  position: relative;
+  z-index: 100;
+  border-radius: 0; /* Eliminado el redondeo */
+  margin: 0; /* Eliminado el margen */
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 245, 255, 0.3), transparent);
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-left: var(--mantine-spacing-md);
+  padding-right: var(--mantine-spacing-md);
+  text-decoration: none;
+  color: #f8fafc; /* Mismo color de texto que en Card */
+  font-weight: 600;
+  font-size: var(--mantine-font-size-sm);
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+
+  /*@media (max-width: $mantine-breakpoint-sm) {*/
+  /*  height: 42px;*/
+  /*  width: 100%;*/
+  /*}*/
+
+  /*@mixin hover {*/
+  /*  color: rgba(0, 245, 255, 0.8);*/
+  /*  background-color: rgba(0, 245, 255, 0.05);*/
+  /*}*/
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(0, 245, 255, 0.7), transparent);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.link:hover::after {
+  width: 80%;
+}
+
+.subLink {
+  width: 100%;
+  padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
+  border-radius: 0; /* Eliminado el redondeo */
+  color: #cbd5e1;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+
+  /*@mixin hover {*/
+  /*  background: rgba(0, 245, 255, 0.05);*/
+  /*  border-color: rgba(0, 245, 255, 0.1);*/
+  /*  transform: translateY(-2px);*/
+  /*  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);*/
+  /*}*/
+}
+
+.dropdownFooter {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a2a2a 100%);
+  margin: calc(var(--mantine-spacing-md) * -1);
+  margin-top: var(--mantine-spacing-sm);
+  padding: var(--mantine-spacing-md) calc(var(--mantine-spacing-md) * 2);
+  padding-bottom: var(--mantine-spacing-xl);
+  border-top: 1px solid rgba(0, 245, 255, 0.1);
+  border-bottom-left-radius: 0; /* Eliminado el redondeo */
+  border-bottom-right-radius: 0; /* Eliminado el redondeo */
+}
+
+.dropdown {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a2a2a 100%);
+  border: 1px solid rgba(0, 245, 255, 0.1);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.6),
+    0 0 20px rgba(0, 245, 255, 0.08);
+  backdrop-filter: blur(20px);
+  border-radius: 0; /* Eliminado el redondeo */
+  overflow: hidden; /* Asegura que el contenido respete los bordes redondeados */
+}
+
+.burgerMenu {
+  color: #f8fafc;
+  transition: all 0.3s ease;
+}
+
+.burgerMenu:hover {
+  color: rgba(0, 245, 255, 0.8);
+}
+
+.button {
+  border-radius: 0; /* Eliminado el redondeo */
+  background: rgba(0, 245, 255, 0.1);
+  border: 1px solid rgba(0, 245, 255, 0.2);
+  color: #f8fafc;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.button:hover {
+  transform: translateY(-4px);
+  background: rgba(0, 245, 255, 0.15);
+  border-color: rgba(0, 245, 255, 0.3);
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(0, 245, 255, 0.1);
+}
+
+.buttonPrimary {
+  background: linear-gradient(135deg, rgba(0, 245, 255, 0.2), rgba(29, 211, 224, 0.3));
+  border: 1px solid rgba(0, 245, 255, 0.3);
+  color: #ffffff;
+  border-radius: 0; /* Eliminado el redondeo */
+}
+
+.buttonPrimary:hover {
+  background: linear-gradient(135deg, rgba(0, 245, 255, 0.3), rgba(29, 211, 224, 0.4));
+  border-color: rgba(0, 245, 255, 0.5);
+}
+
+.drawer {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a2a2a 100%);
+  border-right: 1px solid rgba(0, 245, 255, 0.1);
+  box-shadow:
+    8px 0 32px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(0, 245, 255, 0.05);
+  border-top-right-radius: 0; /* Eliminado el redondeo */
+  border-bottom-right-radius: 0; /* Eliminado el redondeo */
+}
+
+.scrollArea {
+  color: #f8fafc;
+}
+
+.iconTheme {
+  background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(29, 211, 224, 0.05));
+  border: 1px solid rgba(0, 245, 255, 0.1);
+  color: #f8fafc;
+  border-radius: 0; /* Eliminado el redondeo */
+}
+
+.iconTheme:hover {
+  background: linear-gradient(135deg, rgba(0, 245, 255, 0.15), rgba(29, 211, 224, 0.08));
+  border-color: rgba(0, 245, 255, 0.2);
+}
