@@ -6,6 +6,10 @@ import {BrowserRouter, Routes, Route, Outlet, useParams} from 'react-router-dom'
 import HeaderMegaMenu from "./components/menu";
 
 
+import ValueProposition from './components/home/ValueProposition.tsx';
+import Hero from './components/home/Hero.tsx';
+import FeaturedServices from './components/home/FeaturedServices.tsx';
+
 // Datos simulados para la página de servicios
 const serviciosData = {
 	"desarrollo-web": {
@@ -57,19 +61,36 @@ function Home() {
 		<Card key="1" icon={reactIcon} title="Servicio A" content="Descripción breve del servicio A."/>,
 		<Card key="2" icon={reactIcon} title="Servicio B" content="Descripción breve del servicio B."/>,
 		<Card key="3" icon={reactIcon} title="Servicio C" content="Descripción breve del servicio C."/>,
-		<Card key="4" icon={reactIcon} title="Servicio D" content="Descripción breve del servicio D."/>,
-		<Card key="5" icon={reactIcon} title="Servicio E" content="Descripción breve del servicio E."/>,
-		<Card key="6" icon={reactIcon} title="Servicio F" content="Descripción breve del servicio F."/>,
-		<Card key="7" icon={reactIcon} title="Servicio G" content="Descripción breve del servicio G."/>,
-		<Card key="8" icon={reactIcon} title="Servicio H" content="Descripción breve del servicio H."/>
+		<Card key="4" icon={reactIcon} title="Servicio D" content="Descripción breve del servicio D."/>
 	];
 	
-	return <Grid columns={4} cards={cards} />;
+	return (
+		<>
+			<Hero />
+			<FeaturedServices />
+			<ValueProposition />
+			<div style={{ padding: '3rem 2rem', background: '#0a0a0a' }}>
+				<h2 style={{
+					textAlign: 'center',
+					fontSize: '2.2rem',
+					marginBottom: '2rem',
+					background: 'linear-gradient(90deg, #ffffff, rgba(0, 245, 255, 0.8))',
+					WebkitBackgroundClip: 'text',
+					backgroundClip: 'text',
+					color: 'transparent'
+				}}>
+					Nuestras Soluciones
+				</h2>
+				<Grid columns={4} cards={cards} />
+			</div>
+		</>
+	);
 }
 
 // Componente para la página 404
 function NotFound() {
 	return <div>Página no encontrada</div>
+			<ValueProposition />
 }
 
 // Componente para la página de proyectos (placeholder)

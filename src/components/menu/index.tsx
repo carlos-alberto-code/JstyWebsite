@@ -1,6 +1,4 @@
-import {
-	IconChevronDown,
-} from '@tabler/icons-react';
+import {IconChevronDown} from '@tabler/icons-react';
 import {
 	Anchor,
 	Burger,
@@ -21,14 +19,10 @@ import {
 } from '@mantine/core';
 import {useDisclosure} from '@mantine/hooks';
 import classes from './HeaderMegaMenu.module.css';
+import {useNavigate, Link} from 'react-router-dom';
 import {ServiceData, LearningData} from "./mockData.ts";
-import { useNavigate, Link } from 'react-router-dom';
 
-const mockdata = ServiceData;
 
-/**
- * Componente de navegación principal con menús desplegables para servicios y aprendizaje
- */
 export function HeaderMegaMenu() {
 	const [drawerOpened, {toggle: toggleDrawer, close: closeDrawer}] = useDisclosure(false);
 	const [linksOpened, {toggle: toggleLinks}] = useDisclosure(false);
@@ -37,7 +31,7 @@ export function HeaderMegaMenu() {
 	useMantineTheme();
 	
 	// Mapea los datos de servicio a componentes de UI
-	const links = mockdata.map((item) => (
+	const links = ServiceData.map((item) => (
 		<UnstyledButton className={classes.subLink} key={item.title}>
 			<Group wrap="nowrap" align="flex-start">
 				<ThemeIcon size={34} variant="default" radius="md" className={classes.iconTheme}>
@@ -54,7 +48,7 @@ export function HeaderMegaMenu() {
 			</Group>
 		</UnstyledButton>
 	));
-
+	
 	// Mapea los datos de aprendizaje a componentes de UI
 	const learningLinks = LearningData.map((item) => (
 		<UnstyledButton className={classes.subLink} key={item.title}>
@@ -240,7 +234,7 @@ export function HeaderMegaMenu() {
 					</Link>
 					
 					<Divider my="sm" color="rgba(0, 245, 255, 0.1)"/>
-
+					
 					{/* Eliminado el grupo de botones de inicio de sesión y registro */}
 				</ScrollArea>
 			</Drawer>
